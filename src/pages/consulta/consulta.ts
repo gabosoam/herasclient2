@@ -8,6 +8,8 @@ import { PreciosproductoPage } from '../preciosproducto/preciosproducto';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 
+
+
 /**
  * Generated class for the ConsultaPage page.
  *
@@ -145,7 +147,7 @@ export class ConsultaPage {
         break;
 
       case "2":
-        alert('caso 2');
+        //alert('caso 2');
         break;
 
       case "3":

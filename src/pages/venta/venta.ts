@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ServicioProvider } from '../../providers/servicio/servicio';
 import { CantidadPage } from '../cantidad/cantidad';
 import { BuscarproductoPage } from '../buscarproducto/buscarproducto';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 
 
@@ -36,6 +37,7 @@ export class VentaPage {
   isReadyToSave: boolean;
   form: FormGroup;
   form2: FormGroup;
+  usuarioLogueado:any;
 
   constructor(
     public navCtrl: NavController,
@@ -43,7 +45,9 @@ export class VentaPage {
     formBuilder: FormBuilder,
     public servicio: ServicioProvider,
     public modalCtrl: ModalController,
+    public usuario: UsuarioProvider,
     public alertCtrl: AlertController, ) {
+      this.usuarioLogueado= usuario.usuarioLogueado;
     this.factura = { id: 0 };
     this.cliente = "1";
 
@@ -59,6 +63,8 @@ export class VentaPage {
     });
     this.refrescar();
 
+   
+
 
   }
 
@@ -69,7 +75,7 @@ export class VentaPage {
   refrescar() {
     var data = [];
     this.detalles = data;
-    this.servicio.post('factura', { usuario: 'Gabo' }).subscribe((res) => {
+    this.servicio.post('factura', { usuario: this.usuarioLogueado.id.nombre }).subscribe((res) => {
       this.factura = res;
       this.obtenerDetalles(this.factura.id).subscribe(res => {
         this.detalles = res;
