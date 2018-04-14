@@ -1,0 +1,73 @@
+<ion-content>
+
+  <div class="w3-container w3-blue">
+    <h3>Crear producto</h3>
+  </div>
+
+
+
+
+
+  <form class="w3-container" id="container" *ngIf="form" [formGroup]="form" (ngSubmit)="registrar()">
+
+    <label class="w3-text-blue">
+      <b>Código</b>
+    </label>
+    <input class="w3-input w3-border w3-round" placeholder="Código de barras del producto" autofocus formControlName="codigo"
+      type="text">
+
+    <label class="w3-text-blue">
+      <b>Nombre</b>
+    </label>
+    <input class="w3-input w3-border w3-round" placeholder="Nombre del producto" autofocus formControlName="nombre" type="text">
+
+    <label class="w3-text-blue">
+      <b>Unidad</b>
+    </label>
+    <select class="w3-select w3-border w3-round w3-white" name="option" formControlName="unidad">
+      <option value="" disabled selected>Elige una opción</option>
+      <option *ngFor="let unidad of unidades" value={{unidad.id}}>{{unidad.nombre}}</option>
+
+    </select>
+
+    <label class="w3-text-blue">
+      <b>Marca</b>
+    </label>
+    <select class="w3-select w3-border w3-round w3-white" name="option" formControlName="marca">
+      <option value="" disabled selected>Elige una opción</option>
+      <option *ngFor="let marca of marcas" value={{marca.id}}>{{marca.nombre}}</option>
+
+    </select>
+    <label class="w3-text-blue">
+      <b>Categoría</b>
+    </label>
+    <select class="w3-select w3-border w3-round w3-white" name="option" formControlName="categoria">
+      <option value="" disabled selected>Elige una opción</option>
+      <option *ngFor="let categoria of categorias" value={{categoria.id}}>{{categoria.nombre}}</option>
+
+    </select>
+
+    <label class="w3-text-blue">
+        <b>Precio</b>
+      </label>
+      <input class="w3-input w3-border w3-round" placeholder="Precio del producto" autofocus formControlName="precio" type="number">
+  
+      <label class="w3-text-blue">
+          <b>Stock inicial</b>
+        </label>
+        <input class="w3-input w3-border w3-round" placeholder="Stock inicial" autofocus formControlName="stock" type="number">
+  
+        <label class="w3-text-blue">
+            <b>Stock mínimo</b>
+          </label>
+          <input class="w3-input w3-border w3-round" placeholder="Stock mínimo" autofocus formControlName="minimo" type="number">
+      
+
+  </form>
+  <button ion-button (click)="registrar()">Guardar</button>
+  <button ion-button (click)="cancelar()">Cancelar</button>
+
+
+
+
+</ion-content>

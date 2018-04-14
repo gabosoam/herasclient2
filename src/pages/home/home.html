@@ -1,0 +1,38 @@
+<!-- <ion-header>
+
+    <ion-navbar>
+      <ion-title>Inventario Heras - {{usuarioLogueado.id.nombre}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header> -->
+
+  <ion-header>
+      <ion-navbar>
+          <ion-title>Inventario Heras</ion-title>
+        <ion-buttons start>
+          <button ion-button icon-left (click)="cerrarSesion()">
+            <ion-icon name="contact"></ion-icon>
+            {{usuarioLogueado.id.nombre}}
+          </button>
+        </ion-buttons>
+    
+      
+      </ion-navbar>
+    </ion-header>
+
+
+
+<ion-content >
+
+  <ion-tabs color="primary">
+    <ion-tab [root]="consulta" tabTitle="Inicio" tabIcon="ios-home"></ion-tab>
+    <ion-tab [root]="venta" tabTitle="Venta 1" tabIcon="ios-cart"></ion-tab>
+    <ion-tab [root]="venta" tabTitle="Venta 2" tabIcon="ios-cart"></ion-tab>
+
+    <div  >
+    <ion-tab [class.oculto]=" usuarioLogueado.id.rol=='usuario' "  [root]="historial" tabTitle="Historial" tabIcon="ios-document-outline"></ion-tab>
+    </div>
+    
+
+  </ion-tabs>
+</ion-content>
