@@ -25,7 +25,7 @@
     <div class="w3-col l3  w3-padding">
       <button class="w3-large" ion-button icon-left block (click)="buscar()">
         <ion-icon name="search"></ion-icon>
-        Buscar producto por nombre
+        Buscar por nombre
       </button>
 
 
@@ -76,7 +76,7 @@
       <form id="container2" *ngIf="form" [formGroup]="form" (ngSubmit)="buscarCodigo()">
         <div class="w3-row">
           <div class="w3-col l11">
-            <input id="focusInput" class="w3-input w3-border w3-round w3-xlarge" autofocus formControlName="name" placeholder="Ingresar código de barras" type="text">
+            <input #focus  class="w3-input w3-border w3-round w3-xlarge" autofocus formControlName="name" placeholder="Ingresar código de barras" type="text" >
 
           </div>
           <div class="w3-col l1">
@@ -116,8 +116,8 @@
       <td>{{detalle.codigo}}</td>
       <td>{{detalle.producto}}</td>
       <td>{{detalle.unidad}}</td>
-      <td>${{detalle.unitario}}</td>
-      <td>${{detalle.total}}</td>
+      <td>${{(detalle.unitario).toFixed(2)}}</td>
+      <td>${{(detalle.total)}}</td>
       <td>
 
         <button ion-button small icon-only color="danger" (click)="borrarDetalle(detalle.id)" round>
@@ -125,7 +125,7 @@
         </button>
       </td>
 
-      <td>{{detalle.stock}}</td>
+      <td>{{(detalle.stock)}}</td>
     </tr>
   </table>
 

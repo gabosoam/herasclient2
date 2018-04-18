@@ -135,9 +135,9 @@
           <td>{{producto.unidad.nombre}}</td>
           <td>{{producto.marca.nombre}}</td>
           <td>{{producto.categoria.nombre}}</td>
-          <td>${{producto.precio}}</td>
+          <td>${{(producto.precio).toFixed(2)}}</td>
           <td [class.w3-orange]=" producto.minimo >=producto.stock " [class.w3-red]=" producto.stock <= 0 " [class.w3-green]=" producto.stock > producto.minimo ">
-            {{producto.stock}}
+            {{(producto.stock).toFixed(2)}}
           </td>
           <td [class.w3-orange]=" producto.minimo >=producto.stock " [class.w3-red]=" producto.stock <= 0 " [class.w3-green]=" producto.stock > producto.minimo ">{{producto.minimo}}</td>
 

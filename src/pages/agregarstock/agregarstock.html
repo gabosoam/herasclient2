@@ -44,7 +44,7 @@
     <ion-list-header>
       Stock detallado
     </ion-list-header>
-    <ion-item *ngFor="let item of items">{{item.producto.stock * item.tamano}}   {{item.unidad.nombre}}</ion-item>
+    <ion-item *ngFor="let item of items">{{(item.producto.stock * item.tamano).toFixed(2)}}   {{item.unidad.nombre}}</ion-item>
   
   </ion-list>
 

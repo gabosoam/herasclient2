@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ServicioProvider } from '../../providers/servicio/servicio';
@@ -21,6 +21,8 @@ import { UsuarioProvider } from '../../providers/usuario/usuario';
   templateUrl: 'venta.html',
 })
 export class VentaPage {
+
+  @ViewChild('focus') private elementRef: ElementRef;
 
 
   currentItems: any;
@@ -65,15 +67,26 @@ export class VentaPage {
 
    
 
-
+    
   }
 
   ionViewDidLoad() {
+  
+    this.enviarFoco();
+  }
 
+  enviarFoco(){
+    setTimeout(()=>{
+      this.elementRef.nativeElement.focus();
+  }, 150);
   }
 
   refrescar() {
     var data = [];
+    this.vuelto = null;
+    this.recibido= null;
+    
+
     this.detalles = data;
     this.servicio.post('factura', { usuario: this.usuarioLogueado.id.nombre }).subscribe((res) => {
       this.factura = res;
@@ -84,7 +97,11 @@ export class VentaPage {
       var fecha = new Date(this.factura.createdAt);
       this.fecha = fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
     });
+
+    this.enviarFoco();
   }
+
+
 
 
   obtenerDetalles(factura) {
@@ -98,6 +115,7 @@ export class VentaPage {
     seq.subscribe((res: any) => {
       this.detalles = res;
       this.calcularTotal();
+      this.enviarFoco();
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
       } else {
@@ -123,6 +141,8 @@ export class VentaPage {
     let seq = this.servicio.put('factura/' + this.factura.id, { cliente: this.cliente });
 
     seq.subscribe((res: any) => {
+
+      this.enviarFoco();
 
     }, error => {
 
