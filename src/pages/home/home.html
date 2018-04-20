@@ -25,9 +25,11 @@
 <ion-content >
 
   <ion-tabs color="primary">
-    <ion-tab [root]="consulta" tabTitle="Inicio" tabIcon="ios-home"></ion-tab>
-    <ion-tab [root]="venta" tabTitle="Venta 1" tabIcon="ios-cart"></ion-tab>
-    <ion-tab [root]="venta" tabTitle="Venta 2" tabIcon="ios-cart"></ion-tab>
+
+      <ion-tab [root]="venta" tabTitle="Venta 1" tabIcon="ios-cart"></ion-tab>
+      <ion-tab [root]="venta" tabTitle="Venta 2" tabIcon="ios-cart"></ion-tab>
+    <ion-tab [root]="consulta" tabTitle="Consulta" tabIcon="ios-home"></ion-tab>
+    
 
     <div  >
     <ion-tab [class.oculto]=" usuarioLogueado.id.rol=='usuario' "  [root]="historial" tabTitle="Historial" tabIcon="ios-document-outline"></ion-tab>
